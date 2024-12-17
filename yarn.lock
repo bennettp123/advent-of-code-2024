@@ -33,6 +33,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@advent-of-code-2024/day-03@workspace:packages/day-03":
+  version: 0.0.0-use.local
+  resolution: "@advent-of-code-2024/day-03@workspace:packages/day-03"
+  dependencies:
+    "@advent-of-code-2024/utils": "workspace:*"
+    "@biomejs/biome": "npm:*"
+    esbuild: "npm:*"
+    jest: "npm:*"
+  peerDependencies:
+    "@babel/core": "*"
+    "@babel/preset-env": "*"
+    "@babel/preset-typescript": "*"
+    "@biomejs/biome": "*"
+    "@jest/globals": ^29.7.0
+    esbuild: ^0.24.0
+    jest: ^29.7.0
+  languageName: unknown
+  linkType: soft
+
 "@advent-of-code-2024/utils@workspace:*, @advent-of-code-2024/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@advent-of-code-2024/utils@workspace:packages/utils"
