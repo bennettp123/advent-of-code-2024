@@ -1,0 +1,12 @@
+{
+  "editor.renderFinalNewline": "on",
+  "files.insertFinalNewline": true,
+  "[javascript][javascriptreact][typescript][json][jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports.biome": "explicit",
+      "quickfix.biome": "explicit"
+    }
+  }
+}

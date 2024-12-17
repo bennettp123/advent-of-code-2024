@@ -1,10 +1,7 @@
 /** @returns {number} */
-export function getSum(a, b) {
-    /** @type {number[]} */
+export function getSum(/** @type {number[]} */ a, /** @type {number[]} */ b) {
     const _a = a.map(Number).sort((a, b) => a - b)
-    /** @type {number[]} */
     const _b = b.map(Number).sort((a, b) => a - b)
-
     return _a.reduce((acc, value, index) => {
         return acc + Math.abs(value - _b[index])
     }, 0)

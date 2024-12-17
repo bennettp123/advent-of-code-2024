@@ -4,6 +4,10 @@ import { defaults } from 'jest-config'
 export default async () => {
     return {
         verbose: true,
-        testMatch: [ ...defaults.testMatch, '**/__tests__/**/*.[cm]js?(x)', '**/?(*.)+(spec|test).[cm]js?(x)']
+        testMatch: [
+            ...defaults.testMatch,
+            '**/__tests__/**/*.[cm]js?(x)',
+            '**/?(*.)+(spec|test).[cm]js?(x)',
+        ],
     }
 }

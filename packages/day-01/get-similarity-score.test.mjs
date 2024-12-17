@@ -1,6 +1,6 @@
-import { getSimilarityScore } from "./get-similarity-score.mjs"
+import { getSimilarityScore } from './get-similarity-score.mjs'
 
-describe("getSimilarityScore", () => {
+describe('getSimilarityScore', () => {
     it('should match the example', () => {
         const expected = 31
         const result = getSimilarityScore(

@@ -4,13 +4,12 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 
-[*.{ts,js,cjs,mjs}]
+[*.{ts,js,jsx,cjs,mjs,ts,tsx,cts,mts}]
 charset = utf-8
 indent_style = space
 indent_size = 4
 
-[*.{yml,yaml,json}]
+[*.{yml,yaml,json,jsonc}]
 charset = utf-8
 indent_style = space
 indent_size = 2
-

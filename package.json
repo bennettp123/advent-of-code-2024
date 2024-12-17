@@ -7,6 +7,10 @@
   ],
   "scripts": {
     "new-day": "scripts/new-day.sh",
-    "test": "yarn workspaces foreach --all run test"
+    "test": "yarn workspaces foreach --worktree --exclude . --parallel run test",
+    "lint": "yarn workspaces foreach --worktree --exclude . --parallel run lint"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
   }
 }

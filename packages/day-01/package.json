@@ -4,9 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "yarn node --experimental-vm-modules $(yarn bin jest)"
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest) --color",
+    "lint": "yarn biome lint --colors force --error-on-warnings ."
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "jest": "^29.7.0"
   }
 }

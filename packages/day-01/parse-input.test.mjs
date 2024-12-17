@@ -15,7 +15,7 @@ describe('parseInput', () => {
             [4, 3, 5, 3, 9, 3],
         ]
         const result = parseInput(input)
-        
+
         for (const index in expected[0]) {
             expect(expected[0][index]).toStrictEqual(result[0][index])
         }
