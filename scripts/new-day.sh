@@ -44,16 +44,26 @@ if [ -r "${rootdir}/packages/day-${day}" ]; then
     exit 1
 fi
 
-for num in 1; do
-  name="day-${day}"
-  package="@advent-of-code-2024/${name}"
-  packagedir="${rootdir}/packages/${name}"
+name="day-${day}"
+package="@advent-of-code-2024/${name}"
+packagedir="${rootdir}/packages/${name}"
   
-  mkdir -p "${packagedir}"
-  ( cd "${packagedir}" && yarn init -p -n "${package}" )
+mkdir -p "${packagedir}"
+(
+cd "${packagedir}"
+yarn init -p -n "${package}"
 
-  url="https://adventofcode.com/2024/day/$(printf '%d' "${day}")"
-  echo -e "\n${url}\n\n" >> "${packagedir}/README.md"
+cat <<EOF >> "${packagedir}/README.md"
 
-  echo "created ${package} in ${packagedir}"
-done
+see https://adventofcode.com/2024/day/$(printf '%d' "${day}")
+
+* entrypoint: [index.mjs](./index.mjs)
+* test: [index.test.mjs](./index.test.mjs)
+EOF
+)
+
+cp -Rv "${rootdir}/.template/" "${packagedir}"
+
+( cd "${rootdir}" && yarn install )
+
+echo "created ${package} in ${packagedir}"
