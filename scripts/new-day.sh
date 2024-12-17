@@ -53,5 +53,10 @@ for num in 1 2; do
   
   mkdir -p "${packagedir}"
   ( cd "${packagedir}" && yarn init -p -n "${package}" )
+
+  if [ ${num} -eq 1 ]; then
+    echo -e "\nhttps://adventofcode.com/2024/day/$(printf '%d' "${day}")\n\n" >> "${packagedir}/README.md"
+  fi
+
   echo "created ${package} in ${packagedir}"
 done
