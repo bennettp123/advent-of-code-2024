@@ -18,12 +18,52 @@ describe('is-safe', () => {
             }
 
             for (const example of examples.safe) {
-                expect(isSafe(example)).toBeTruthy()
+                expect(isSafe()(example)).toBeTruthy()
             }
 
             for (const example of examples.unsafe) {
-                expect(isSafe(example)).toBeFalsy()
+                expect(isSafe()(example)).toBeFalsy()
             }
+        })
+
+        it('should allow for a single unsafe value', () => {
+            expect(
+                isSafe({ allowUnsafeValues: 1 })([1, 2, 3, 4, 6]),
+            ).toBeTruthy()
+
+            expect(
+                isSafe({ allowUnsafeValues: 1 })([1, 2, 4, 3, 6]),
+            ).toBeTruthy()
+
+            expect(isSafe({ allowUnsafeValues: 1 })([10, 9, 7, 1])).toBeTruthy()
+        })
+
+        it('should not allow for too many unsafe values', () => {
+            expect(
+                isSafe({ allowUnsafeValues: 0 })([1, 2, 4, 3, 6]),
+            ).toBeFalsy()
+
+            expect(
+                isSafe({ allowUnsafeValues: 1 })([2, 1, 3, 6, 5]),
+            ).toBeFalsy()
+
+            expect(
+                isSafe({ allowUnsafeValues: 1 })([1, 2, 9, 10, 11]),
+            ).toBeFalsy()
+        })
+
+        it('even allows for multiple unsafe values', () => {
+            expect(
+                isSafe({ allowUnsafeValues: 2 })([4, 5, 6, 1, 2]),
+            ).toBeTruthy()
+
+            expect(
+                isSafe({ allowUnsafeValues: 4 })([4, 5, 6, 1, 2, 12, 11, 10]),
+            ).toBeFalsy()
+
+            expect(
+                isSafe({ allowUnsafeValues: 5 })([4, 5, 6, 1, 2, 12, 11, 10]),
+            ).toBeTruthy()
         })
     })
 
