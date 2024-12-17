@@ -11,6 +11,12 @@
     "lint": "yarn workspaces foreach --worktree --exclude . --parallel run lint"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4"
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
+    "@biomejs/biome": "^1.9.4",
+    "@jest/globals": "^29.7.0",
+    "esbuild": "^0.24.0",
+    "jest": "^29.7.0"
   }
 }
