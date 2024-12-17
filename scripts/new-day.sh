@@ -10,7 +10,6 @@ function get_current_day() {
     shopt -s nullglob
     for dir in day-*; do echo "$dir"; done \
       | sed 's/^day-//' \
-      | sed 's/-[12]$//' \
       | sort -r \
       | head -n1
   )
@@ -40,23 +39,21 @@ if [ ${day} -lt 1 ] || [ ${day} -gt 99 ]; then
   exit 1
 fi
 
-if [ -r "${rootdir}/packages/day-${day}-1" ] || \
-   [ -r "${rootdir}/packages/day-${day}-2" ]; then
+if [ -r "${rootdir}/packages/day-${day}" ]; then
     echo "Day ${day} already exists" >&2
     exit 1
 fi
 
-for num in 1 2; do
-  name="day-${day}-${num}"
+for num in 1; do
+  name="day-${day}"
   package="@advent-of-code-2024/${name}"
   packagedir="${rootdir}/packages/${name}"
   
   mkdir -p "${packagedir}"
   ( cd "${packagedir}" && yarn init -p -n "${package}" )
 
-  if [ ${num} -eq 1 ]; then
-    echo -e "\nhttps://adventofcode.com/2024/day/$(printf '%d' "${day}")\n\n" >> "${packagedir}/README.md"
-  fi
+  url="https://adventofcode.com/2024/day/$(printf '%d' "${day}")"
+  echo -e "\n${url}\n\n" >> "${packagedir}/README.md"
 
   echo "created ${package} in ${packagedir}"
 done

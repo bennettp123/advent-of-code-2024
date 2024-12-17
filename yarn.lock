@@ -5,17 +5,11 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@advent-of-code-2024/day-01-1@workspace:packages/day-01-1":
+"@advent-of-code-2024/day-01@workspace:packages/day-01":
   version: 0.0.0-use.local
-  resolution: "@advent-of-code-2024/day-01-1@workspace:packages/day-01-1"
+  resolution: "@advent-of-code-2024/day-01@workspace:packages/day-01"
   dependencies:
     jest: "npm:^29.7.0"
-  languageName: unknown
-  linkType: soft
-
-"@advent-of-code-2024/day-01-2@workspace:packages/day-01-2":
-  version: 0.0.0-use.local
-  resolution: "@advent-of-code-2024/day-01-2@workspace:packages/day-01-2"
   languageName: unknown
   linkType: soft
 

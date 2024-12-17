@@ -1,3 +1,4 @@
+/** @returns {number} */
 export function getSum(a, b) {
     /** @type {number[]} */
     const _a = a.map(Number).sort((a, b) => a - b)

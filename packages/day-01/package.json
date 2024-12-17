@@ -1,5 +1,5 @@
 {
-  "name": "@advent-of-code-2024/day-01-1",
+  "name": "@advent-of-code-2024/day-01",
   "packageManager": "yarn@4.5.3",
   "private": true,
   "type": "module",
