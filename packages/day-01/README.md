@@ -9,6 +9,6 @@ https://adventofcode.com/2024/day/1#part1
 input.txt comes from https://adventofcode.com/2024/day/1/input
 
 ```bash
-node packages/day-01-1/index.mjs
+node index.mjs
 ```
 

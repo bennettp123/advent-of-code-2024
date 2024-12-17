@@ -49,18 +49,15 @@ package="@advent-of-code-2024/${name}"
 packagedir="${rootdir}/packages/${name}"
   
 mkdir -p "${packagedir}"
-(
-cd "${packagedir}"
-yarn init -p -n "${package}"
+( cd "${packagedir}" && yarn init -p -n "${package}" )
 
 cat <<EOF >> "${packagedir}/README.md"
 
 see https://adventofcode.com/2024/day/$(printf '%d' "${day}")
 
-* entrypoint: [index.mjs](./index.mjs)
-* test: [index.test.mjs](./index.test.mjs)
+* test using \`yarn test && yarn lint\`
+* run using \`yarn run script\`
 EOF
-)
 
 cp -Rv "${rootdir}/.template/" "${packagedir}"
 
