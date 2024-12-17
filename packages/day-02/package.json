@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "scripts": {
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest)"
+  },
+  "name": "@advent-of-code-2024/day-02",
+  "packageManager": "yarn@4.5.3",
+  "private": true
+}

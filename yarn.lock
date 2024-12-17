@@ -13,6 +13,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@advent-of-code-2024/day-02@workspace:packages/day-02":
+  version: 0.0.0-use.local
+  resolution: "@advent-of-code-2024/day-02@workspace:packages/day-02"
+  dependencies:
+    jest: "npm:^29.7.0"
+  languageName: unknown
+  linkType: soft
+
 "@ampproject/remapping@npm:^2.2.0":
   version: 2.3.0
   resolution: "@ampproject/remapping@npm:2.3.0"

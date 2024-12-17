@@ -6,6 +6,7 @@
     "packages/*"
   ],
   "scripts": {
-    "new-day": "scripts/new-day.sh"
+    "new-day": "scripts/new-day.sh",
+    "test": "yarn workspaces foreach --all run test"
   }
 }
