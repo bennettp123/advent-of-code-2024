@@ -1,6 +1,7 @@
 import assert from 'node:assert'
 
 export function* parse(input: string) {
+    let isEnabled = true
     for (const token of tokenize(input)) {
         const command = token.split('(')[0]
         const args = token
@@ -9,7 +10,15 @@ export function* parse(input: string) {
             .map(Number)
         switch (command) {
             case 'mul':
-                yield args.reduce((acc, value) => acc * value, 1)
+                if (isEnabled) {
+                    yield args.reduce((acc, value) => acc * value, 1)
+                }
+                break
+            case 'do':
+                isEnabled = true
+                break
+            case `don't`:
+                isEnabled = false
                 break
             default:
                 assert.fail(`unrecognized command ${command}`)
@@ -19,7 +28,7 @@ export function* parse(input: string) {
 }
 
 export function* tokenize(input: string): Generator<string> {
-    const tokens = [/^mul\(\d+,\d+\)/]
+    const tokens = [/^mul\(\d+,\d+\)/, /^do\(\)/, /^don\'t\(\)/]
     let i = 0
     while (i < input.length) {
         const nextToken = tokens.find(token => input.slice(i).match(token))
