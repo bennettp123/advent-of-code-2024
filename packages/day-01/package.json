@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "yarn node --experimental-vm-modules $(yarn bin jest) --color",
-    "lint": "yarn biome lint --colors force --error-on-warnings ."
+    "lint": "yarn biome lint --colors force --error-on-warnings .",
+    "start": "yarn node ./index.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "*",

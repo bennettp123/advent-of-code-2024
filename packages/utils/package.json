@@ -9,11 +9,6 @@
     "test": "yarn node --experimental-vm-modules --experimental-require-module \"$(yarn bin jest)\" --color"
   },
   "devDependencies": {
-    "@biomejs/biome": "*",
-    "esbuild": "*",
-    "jest": "*"
-  },
-  "peerDependencies": {
     "@babel/core": "*",
     "@babel/preset-env": "*",
     "@babel/preset-typescript": "*",
