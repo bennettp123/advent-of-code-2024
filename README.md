@@ -9,9 +9,38 @@ Each day has two challenges.
 
 etc.
 
-To add a new day:
+### Running
+
+* A script for a particular day can be run using
+
+```bash
+yarn run day NUM
+```
+
+### Adding a new day
 
 ```bash
 yarn run new-day
 ```
+
+* creates a new package for the next day in packages/day-NN
+* sets `dependencies`, `devDependencies`, etc using the values of `initFields`
+  in `.yarnrc.yml`
+* copies files from `.template` into the package folder
+* runs `yarn install` to populate dependencies
+
+### Testing
+
+To test all packages:
+
+```bash
+yarn run test
+```
+
+To test a specific day:
+
+```bash
+yarn workspace @advent-of-code-2024/day-NN run test
+```
+
 
