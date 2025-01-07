@@ -1,0 +1,25 @@
+{
+  "type": "module",
+  "module": "index.ts",
+  "main": "index.ts",
+  "scripts": {
+    "build": "yarn run clean && yarn node \"$(yarn bin esbuild)\" --color=true --bundle --platform=node --sourcemap=inline --format=esm --main-fields=module,main --target=es2022 --out-extension:.js=.mjs",
+    "clean": "rm -rf ./dist",
+    "lint": "yarn biome lint --colors force --error-on-warnings .",
+    "start": "yarn run build index=. --outdir=./dist && yarn node --experimental-vm-modules ./dist/index.mjs",
+    "test": "yarn node --experimental-vm-modules --experimental-require-module \"$(yarn bin jest)\" --color"
+  },
+  "devDependencies": {
+    "@advent-of-code-2024/utils": "workspace:*",
+    "@babel/core": "*",
+    "@babel/preset-env": "*",
+    "@babel/preset-typescript": "*",
+    "@biomejs/biome": "*",
+    "@jest/globals": "*",
+    "esbuild": "*",
+    "jest": "*"
+  },
+  "name": "@advent-of-code-2024/day-05",
+  "packageManager": "yarn@4.5.3",
+  "private": true
+}
