@@ -1,25 +1,12 @@
-import { readInput } from '@advent-of-code-2024/utils'
 import {
-    Direction,
-    countXMAS,
+    ALL_DIRECTIONS,
     getBoardDimensions,
-    getDiagonal,
-    sequence,
-} from './src/word-search-utils'
+    readInput,
+} from '@advent-of-code-2024/utils'
+import { countXMAS, getDiagonal, sequence } from './src/word-search-utils'
 
 const xmas = 'XMAS'
 const maxLength = xmas.length
-
-const directions = [
-    Direction.DOWN,
-    Direction.DOWN_LEFT,
-    Direction.DOWN_RIGHT,
-    Direction.LEFT,
-    Direction.RIGHT,
-    Direction.UP,
-    Direction.UP_LEFT,
-    Direction.UP_RIGHT,
-]
 
 const board = await readInput('input.txt')
 
@@ -33,7 +20,7 @@ if (computePartOne) {
     for (const row of sequence(height)) {
         for (const column of sequence(width)) {
             const pos = { row, column }
-            for (const direction of directions) {
+            for (const direction of ALL_DIRECTIONS) {
                 if (
                     getDiagonal({
                         board,

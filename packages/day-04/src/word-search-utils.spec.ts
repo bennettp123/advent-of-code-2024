@@ -1,10 +1,7 @@
+import { Direction } from '@advent-of-code-2024/utils'
 import { describe, expect, it } from '@jest/globals'
 import {
-    Direction,
     countXMAS,
-    getAllColumns,
-    getAllRows,
-    getBoardDimensions,
     getCharAt,
     getDiagonal,
     getDiagonalChars,
@@ -13,21 +10,6 @@ import {
 } from './word-search-utils'
 
 describe('word-search-utils', () => {
-    describe('getAllRows', () => {
-        it('should convert a board to rows', () => {
-            expect(getAllRows('abc\ndef\nghi')).toEqual(['abc', 'def', 'ghi'])
-        })
-    })
-    describe('getAllColumns', () => {
-        it('should convert a board to columns', () => {
-            expect(getAllColumns('abc\ndef\nghi')).toEqual([
-                'adg',
-                'beh',
-                'cfi',
-            ])
-        })
-    })
-
     describe('getDiagonal', () => {
         it('should return the expected results', () => {
             /**
@@ -307,19 +289,6 @@ describe('word-search-utils', () => {
             ].join('\n')
 
             expect(countXMAS({ board })).toBe(9)
-        })
-    })
-
-    describe('getBoardDimensions', () => {
-        it('should get the dimensions of a board', () => {
-            expect(getBoardDimensions('abc\ndef\nghi')).toEqual({
-                width: 3,
-                height: 3,
-            })
-            expect(getBoardDimensions('abcd\nefgh\nijkl')).toEqual({
-                width: 4,
-                height: 3,
-            })
         })
     })
 

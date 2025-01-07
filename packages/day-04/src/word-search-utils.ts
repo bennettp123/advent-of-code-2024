@@ -1,15 +1,9 @@
-export function getAllRows(board: string): string[] {
-    return board.split('\n')
-}
-
-export function getAllColumns(board: string): string[] {
-    const rows = getAllRows(board)
-    const columns: string[] = []
-    for (let i = 0; i < rows[0].length; i++) {
-        columns.push(rows.map(row => row[i]).join(''))
-    }
-    return columns
-}
+import {
+    Direction,
+    type Position,
+    getAllRows,
+    getBoardDimensions,
+} from '@advent-of-code-2024/utils'
 
 export function* sequence(start: number, end?: number) {
     if (end === undefined) {
@@ -21,29 +15,6 @@ export function* sequence(start: number, end?: number) {
             yield i
         }
     }
-}
-
-export enum Direction {
-    UP_LEFT = 'UP_LEFT',
-    UP_RIGHT = 'UP_RIGHT',
-    DOWN_LEFT = 'DOWN_LEFT',
-    DOWN_RIGHT = 'DOWN_RIGHT',
-    UP = 'UP',
-    DOWN = 'DOWN',
-    LEFT = 'LEFT',
-    RIGHT = 'RIGHT',
-}
-
-export interface Position {
-    row: number
-    column: number
-}
-
-export interface DiagonalChars {
-    [Direction.UP_LEFT]: string
-    [Direction.UP_RIGHT]: string
-    [Direction.DOWN_LEFT]: string
-    [Direction.DOWN_RIGHT]: string
 }
 
 export function countXMAS({ board }: { board: string }): number {
@@ -103,6 +74,13 @@ export function getCharAt({ board, pos }: { board: string; pos: Position }) {
     const rows = getAllRows(board)
     const { row, column } = pos
     return rows[row]?.[column]
+}
+
+export interface DiagonalChars {
+    [Direction.UP_LEFT]: string
+    [Direction.UP_RIGHT]: string
+    [Direction.DOWN_LEFT]: string
+    [Direction.DOWN_RIGHT]: string
 }
 
 export function getDiagonalChars({
@@ -170,20 +148,4 @@ export function getDiagonal({
         }
     }
     return result
-}
-
-export function getBoardDimensions(board: string): {
-    width: number
-    height: number
-} {
-    return {
-        width: getAllRows(board).reduce(
-            (max, row) => Math.max(max, row.length),
-            0,
-        ),
-        height: getAllColumns(board).reduce(
-            (max, row) => Math.max(max, row.length),
-            0,
-        ),
-    }
 }
