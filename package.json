@@ -8,7 +8,9 @@
   "scripts": {
     "new-day": "scripts/new-day.sh",
     "test": "yarn workspaces foreach --worktree --exclude . --parallel run test",
-    "lint": "yarn workspaces foreach --worktree --exclude . --parallel run lint"
+    "lint": "yarn workspaces foreach --worktree --exclude . --parallel run lint",
+    "start": "yarn workspaces foreach --worktree --exclude . --parallel run start",
+    "day": "scripts/run-day.sh"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
