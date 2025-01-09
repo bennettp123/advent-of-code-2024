@@ -7,8 +7,7 @@ import {
     stripTrailingEmpties,
 } from '@advent-of-code-2024/utils'
 
-import Victor from 'victor'
-import { getAntinodePositions } from './src/helpers'
+import { getRepeatingAntinodePositions } from './src/helpers'
 
 const input = [
     ...(await readInput('input.txt').then(stripTrailingEmpties)),
@@ -44,36 +43,61 @@ for (const antenna of antennas) {
 
 const frequencies = Array.from(antennasByFrequency.keys())
 
-const antinodes = MutableBoard.from(board)
+const part1Antinodes = MutableBoard.from(board)
+const part2Antinodes = MutableBoard.from(board)
 
 for (const frequency of frequencies) {
     const antennas = antennasByFrequency.get(frequency) ?? []
     antennas.forEach((a, aIdx) => {
         antennas.forEach((b, bIdx) => {
             if (aIdx > bIdx) {
-                const [antinode1, antinode2] = getAntinodePositions(
-                    a.position,
-                    b.position,
-                )
-                if (antinodes.isInBounds(antinode1)) {
-                    antinodes.set(antinode1, '#')
-                }
-                if (antinodes.isInBounds(antinode2)) {
-                    antinodes.set(antinode2, '#')
+                for (const direction of [true, false]) {
+                    let count = 0
+                    for (const antinode of getRepeatingAntinodePositions(
+                        a.position,
+                        b.position,
+                        direction,
+                    )) {
+                        if (count < 1) {
+                            if (part1Antinodes.isInBounds(antinode)) {
+                                part1Antinodes.set(antinode, '#')
+                            }
+                        }
+                        count = count + 1
+                        if (part2Antinodes.isInBounds(antinode)) {
+                            part2Antinodes.set(antinode, '#')
+                        } else {
+                            break
+                        }
+                    }
                 }
             }
         })
     })
 }
 
-let antinodesCount = 0
-for (const row of sequence(antinodes.height)) {
-    for (const column of sequence(antinodes.width)) {
+let part1AntinodesCount = 0
+for (const row of sequence(part1Antinodes.height)) {
+    for (const column of sequence(part1Antinodes.width)) {
         const pos = { row, column }
-        if (antinodes.get(pos) === '#') {
-            antinodesCount = antinodesCount + 1
+        if (part1Antinodes.get(pos) === '#') {
+            part1AntinodesCount = part1AntinodesCount + 1
         }
     }
 }
 
-console.info(`part 1: ${antinodesCount} antinodes found`)
+console.info(`part 1: ${part1AntinodesCount} antinodes found`)
+
+let part2AntinodesCount = 0
+for (const row of sequence(part2Antinodes.height)) {
+    for (const column of sequence(part2Antinodes.width)) {
+        const pos = { row, column }
+        if (part2Antinodes.get(pos) === '#') {
+            part2AntinodesCount = part2AntinodesCount + 1
+        }
+    }
+}
+
+console.debug(part2Antinodes.toString())
+
+console.info(`part 2: ${part2AntinodesCount} antinodes found`)

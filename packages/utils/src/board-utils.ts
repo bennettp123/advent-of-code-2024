@@ -75,6 +75,17 @@ export interface Position {
     column: number
 }
 
+export function isPosition(x: unknown): x is Position {
+    return (
+        typeof x === 'object' &&
+        x !== null &&
+        'row' in x &&
+        'column' in x &&
+        typeof x.row === 'number' &&
+        typeof x.column === 'number'
+    )
+}
+
 export function getBoard(input: string): Board {
     return new Board(input)
 }
