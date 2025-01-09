@@ -45,3 +45,9 @@ cp -Rv "${rootdir}/.template/" "${packagedir}"
 ( cd "${rootdir}" && yarn install )
 
 echo "created ${package} in ${packagedir}"
+
+if ( cd "${rootdir}/scripts" && node ./update-launch-configs.cjs "${day}" ); then
+  echo "updated launch.json"
+else
+  echo "failed to update launch.json" >&2
+fi

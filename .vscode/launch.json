@@ -4,7 +4,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Launch: Day 07",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/packages/day-07/index.ts",
       "preLaunchTask": "npm: build - packages/day-07",
