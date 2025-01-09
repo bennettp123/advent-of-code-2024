@@ -45,3 +45,4 @@ cp -Rv "${rootdir}/.template/" "${packagedir}"
 ( cd "${rootdir}" && yarn install )
 
 echo "created ${package} in ${packagedir}"
+
