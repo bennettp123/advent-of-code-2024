@@ -3,19 +3,8 @@ import {
     type Position,
     getAllRows,
     getBoardDimensions,
+    sequence,
 } from '@advent-of-code-2024/utils'
-
-export function* sequence(start: number, end?: number) {
-    if (end === undefined) {
-        for (const i of sequence(0, start)) {
-            yield i
-        }
-    } else {
-        for (let i = start; i < end; i++) {
-            yield i
-        }
-    }
-}
 
 export function countXMAS({ board }: { board: string }): number {
     const { width, height } = getBoardDimensions(board)
