@@ -1,7 +1,7 @@
 export class Board {
-    private readonly _rows: string[]
-    public get rows(): string[] {
-        return this._rows
+    grid: string[][]
+    get rows() {
+        return this.grid.map(row => row.join(''))
     }
     private readonly _width: number
     public get width(): number {
@@ -12,9 +12,9 @@ export class Board {
         return this._height
     }
     constructor(input: string) {
-        this._rows = getAllRows(input)
-        this._height = this._rows.length
-        this._width = Math.max(...this._rows.map(row => row.length))
+        this.grid = input.split('\n').map(row => row.split(''))
+        this._height = this.grid.length
+        this._width = Math.max(...this.grid.map(row => row.length))
     }
     isInBounds(pos: Position): boolean {
         const { column, row } = pos
@@ -23,27 +23,28 @@ export class Board {
         )
     }
     get(pos: Position): string {
-        return this.rows[pos.row]?.[pos.column]
+        return this.grid[pos.row]?.[pos.column]
     }
     static from(board: Board): Board {
-        return new Board(board.rows.join('\n'))
+        return new Board(board.grid.map(row => row.join('')).join('\n'))
+    }
+    toString() {
+        return this.grid.map(row => row.join('')).join('\n')
     }
 }
 
 export class MutableBoard extends Board {
-    grid: string[][]
-    get rows() {
-        return this.grid.map(row => row.join(''))
-    }
-    constructor(input: string) {
-        super(input)
-        this.grid = input.split('\n').map(row => row.split(''))
-    }
     set(pos: Position, value: string) {
         this.grid[pos.row][pos.column] = value
     }
+    public get height(): number {
+        return this.grid.length
+    }
+    public get width(): number {
+        return Math.max(...this.grid.map(row => row.length))
+    }
     static from(board: Board): MutableBoard {
-        return new MutableBoard(board.rows.join('\n'))
+        return new MutableBoard(board.grid.map(row => row.join('')).join('\n'))
     }
 }
 
