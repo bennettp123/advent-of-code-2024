@@ -17,7 +17,8 @@
     "@biomejs/biome": "*",
     "@jest/globals": "*",
     "esbuild": "*",
-    "jest": "*"
+    "jest": "*",
+    "victor": "^1.1.0"
   },
   "name": "@advent-of-code-2024/day-08",
   "packageManager": "yarn@4.5.3",

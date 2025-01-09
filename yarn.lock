@@ -116,6 +116,7 @@ __metadata:
     "@jest/globals": "npm:*"
     esbuild: "npm:*"
     jest: "npm:*"
+    victor: "npm:^1.1.0"
   languageName: unknown
   linkType: soft
 
@@ -2160,6 +2161,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/victor@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "@types/victor@npm:1.1.5"
+  checksum: 10c0/3e840fdb1866244c5035233a4e077e5e5f026553034e492aa7f55749790930359a52ae9f73bd256e47f31eab4ebbe5a65579554ec8d030b2bc492ccebe7f276f
+  languageName: node
+  linkType: hard
+
 "@types/yargs-parser@npm:*":
   version: 21.0.3
   resolution: "@types/yargs-parser@npm:21.0.3"
@@ -2192,6 +2200,7 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.26.0"
     "@biomejs/biome": "npm:^1.9.4"
     "@jest/globals": "npm:^29.7.0"
+    "@types/victor": "npm:^1.1.5"
     esbuild: "npm:^0.24.0"
     jest: "npm:^29.7.0"
   languageName: unknown
@@ -4814,6 +4823,13 @@ __metadata:
     "@types/istanbul-lib-coverage": "npm:^2.0.1"
     convert-source-map: "npm:^2.0.0"
   checksum: 10c0/968bcf1c7c88c04df1ffb463c179558a2ec17aa49e49376120504958239d9e9dad5281aa05f2a78542b8557f2be0b0b4c325710262f3b838b40d703d5ed30c23
+  languageName: node
+  linkType: hard
+
+"victor@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "victor@npm:1.1.0"
+  checksum: 10c0/7ba0d011d0395916e0814e08e5a5a90b5c67382ed85ed3ab030a1eb3f07d215cc8e00b36409a2b9798a0f75a0bc1d0cfa137424926f1ece8d83bf2f1b0e4e10b
   languageName: node
   linkType: hard
 

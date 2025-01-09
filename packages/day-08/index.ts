@@ -6,6 +6,10 @@ import {
     sequence,
     stripTrailingEmpties,
 } from '@advent-of-code-2024/utils'
+
+import Victor from 'victor'
+import { getAntinodePositions } from './src/helpers'
+
 const input = [
     ...(await readInput('input.txt').then(stripTrailingEmpties)),
 ].join('\n')
@@ -42,32 +46,15 @@ const frequencies = Array.from(antennasByFrequency.keys())
 
 const antinodes = MutableBoard.from(board)
 
-console.log(
-    `before: antinodes width: ${antinodes.width}, height: ${antinodes.height}`,
-)
-console.log(antinodes.toString())
-
 for (const frequency of frequencies) {
     const antennas = antennasByFrequency.get(frequency) ?? []
     antennas.forEach((a, aIdx) => {
         antennas.forEach((b, bIdx) => {
             if (aIdx > bIdx) {
-                const offset: Position = {
-                    row: Math.abs(a.position.row - b.position.row),
-                    column: Math.abs(a.position.column - b.position.column),
-                }
-                const antinode1: Position = {
-                    row: Math.max(a.position.row, b.position.row) + offset.row,
-                    column:
-                        Math.max(a.position.column, b.position.column) +
-                        offset.column,
-                }
-                const antinode2: Position = {
-                    row: Math.min(a.position.row, b.position.row) - offset.row,
-                    column:
-                        Math.min(a.position.column, b.position.column) -
-                        offset.column,
-                }
+                const [antinode1, antinode2] = getAntinodePositions(
+                    a.position,
+                    b.position,
+                )
                 if (antinodes.isInBounds(antinode1)) {
                     antinodes.set(antinode1, '#')
                 }
@@ -78,12 +65,6 @@ for (const frequency of frequencies) {
         })
     })
 }
-console.log(
-    console.log(
-        `after: antinodes width: ${antinodes.width}, height: ${antinodes.height}`,
-    ),
-)
-console.log(antinodes.toString())
 
 let antinodesCount = 0
 for (const row of sequence(antinodes.height)) {
